@@ -1,0 +1,21 @@
+<script>
+/*WAP to search element inside array*/
+
+var ar=[10,20,30,40,50,30,70,80,80,30,110,30]
+var n=30
+flag=0
+
+
+for(let i in ar)
+{
+    if(ar[i]==n)
+    {
+   document.write("<h1>Element found at index "+i+"</h1>")
+   flag=1
+    }
+}
+
+if(flag==0)
+document.write("<h1>Element not found</h1>")
+
+</script>
