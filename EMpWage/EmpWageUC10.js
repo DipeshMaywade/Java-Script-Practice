@@ -21,18 +21,25 @@ let totalEmpHr = 0;
 let days = 0;
 let dailyWageArray = new Array();
 let dailyWageMap = new Map();
+let empDailyHrsMap = new Map();
 
 while(totalEmpHr < MAX_WROKING_HR && days < NUM_OF_DAYS){
     days++
     let empCheck = Math.floor(Math.random()*10)%3;
     let empHR = getHR(empCheck);
     totalEmpHr = totalEmpHr + empHR; 
-    dailyWageArray.push(empHR*WAGE_PR_HR);
-    dailyWageMap.set(days, empHR*WAGE_PR_HR);
+    dailyWageArray.push(
+        {
+            dayNum: days,
+            dailyHr: empHR,
+            dailyWage: empHR*WAGE_PR_HR,
+            toString(){
+                return '\nDay: ' +this.dayNum+' => WorkingHr: '+this.dailyHr+' And Wage Earn: '+this.dailyWage
+            }
+        }
+    );
 }
+
 let empWage = totalEmpHr * WAGE_PR_HR;
 console.log("Total Days: "+days+" Working HR: "+ totalEmpHr+ ", UC2 - Emp Wage: "+ empWage);
 console.log("Array of daily wage: "+dailyWageArray);
-for(let [key ,values] of dailyWageMap){
-    console.log("Day:"+key+ " => " +values+"/-");
-}
